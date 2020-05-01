@@ -5,7 +5,7 @@ Encore un schéma pour tenter de faire revivre les piles alcalines
 "Yacc" est un acronyme bien connu des développeurs logiciels.
 Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
 
-Ce soir je vous présente "Yarab" 
+<b>Ce soir je vous présente "Yarab" </b>
 
 ## Yet Another Regenerator Alkaline Batterie"
  Ce serpent de mer de l'électronique a de nombreux avatars, plus ou moins compliqués et, on l'espère, une certaine efficacité.
