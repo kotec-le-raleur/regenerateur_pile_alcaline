@@ -12,7 +12,7 @@ Ce soir je vous présente "Yarab"
 Ce serpent de mer de l'électronique a de nombreux avatars, plus ou moins compliqués et, on l'espère, une certaine efficacité.
 
 Voici le mien, à base de l'inévitable ATTiny85.
-L'aventage d'utiliser un micro-controleur est:
+L'avantage d'utiliser un micro-controleur est:
 -- réduire le nombre de  composants externes
 -- une grande marge de réglage de l'impulsion de charge
 -- des mesures précises de tension avec ou sans charge
@@ -28,7 +28,7 @@ ne m'ont pas convainçue.
 L'entrée PB0 ( pin 5) du circuit sert ici d'entrée de la tensionde référence. 
 Cette tension, qui doit être très stable, est faite avec le circuit TL431 et une résistance.
 L'avantage est que l'étalonnage se réduit à la mesure avec un multimètre de cette tension (2.493 V dans mon montage) et au report de cette valeur dans le code.
-## define  REF_EXT      2.493
+ #define  REF_EXT      2.493
 Le montage est insensible vis à vis de la tension d'alimentation, qui peut être variable selon 
 l'adaptateur secteur --> 5V utilisé.
 La tension à mesurer est entre 1.3 et 1.75 V , une référence de 2.048 V serait plus adaptée, mais je n'en n'avait pas sous la main.
