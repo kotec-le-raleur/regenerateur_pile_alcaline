@@ -7,7 +7,7 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
 
 Ce soir je vous présente "Yarab" 
 
-# Yet Another Regenerator Alkaline Batterie"
+## Yet Another Regenerator Alkaline Batterie"
 
  Ce serpent de mer de l'électronique a de nombreux avatars, plus ou moins compliqués et, on l'espère, une certaine efficacité.
 
@@ -48,12 +48,13 @@ Ce soir je vous présente "Yarab"
     A2 Pile| 3:PB4  6: PB1 |Cmd charge 100mA
            | 4:Gnd  5: PB0 |External Ref ==> TL431
            ----------------- 
-
+```
  PB3 est la sortie série à 9600 bd (modifiable) et active aussi la led rouge 
  PB4 est l'entrée analogique, reliée directement au pole + de la pile
  PB0 est l'entrée de la référence de tension du TL431
  PB1 commande la charge à travers une résistance de 33 ohm et un PNP 2N2907
  PB2 active la décharge de la pile à travers une résistance de 24 ohm et un 2N7000.
+ ```
  Un condensateur de 2200µF est placé entre le + et - fournit par la prise mini USB 
 
  Il me manque une IO pour implémenter un afficheur I2C , mais je voulais réserver PB0 à la référence de tension.
