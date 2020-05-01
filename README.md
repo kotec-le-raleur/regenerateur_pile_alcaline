@@ -6,7 +6,8 @@ Encore un schéma pour tenter de faire revivre les piles alcalines
 Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
 
 Ce soir je vous présente "Yarab" 
-Yet Another Regenerator Alkaline Batterie"
+
+##Yet Another Regenerator Alkaline Batterie"
 
 Ce serpent de mer de l'électronique a de nombreux avatars, plus ou moins compliqués et, on l'espère, une certaine efficacité.
 
@@ -22,7 +23,7 @@ L'aventage d'utiliser un micro-controleur est:
 Voici quelques photos et le schéma du montage
 Pour le code voir sur mon dépot github
 
-http://nnn 
+
 
 J'ai fait le choix d'utiliser une référence de tension externe car les références internes
 ne m'ont pas convainçue.
@@ -40,7 +41,7 @@ On fait 5*32 = 160 cycles ainsi, puis la lecture de la tension sans charge et en
 
 Un calcul permet d'évaluer la résistance interne . Bien sûr, ce n'est pas une valeur très précise, mais plutôt une indication de la "santé" de la pile .
 
-Explication sur le schéma:
+##Explication sur le schéma:
 
 // PINS    ATT85
 //        ________-_______
