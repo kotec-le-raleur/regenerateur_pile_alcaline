@@ -23,14 +23,18 @@ Ce soir je vous présente "Yarab"
 
 
 
- J'ai fait le choix d'utiliser une référence de tension externe car les références internes
- ne m'ont pas convainçue.
+ J'ai fait le choix d'utiliser une référence de tension externe car les références internes ne m'ont pas convainçue.
+ 
  L'entrée PB0 ( pin 5) du circuit sert ici d'entrée de la tensionde référence. 
+ 
  Cette tension, qui doit être très stable, est faite avec le circuit TL431 et une résistance.
+ 
  L'avantage est que l'étalonnage se réduit à la mesure avec un multimètre de cette tension (2.493 V dans mon montage) et au report de     cette valeur dans le code. 
+ 
  \#define  REF_EXT      2.493
- Le montage est insensible vis à vis de la tension d'alimentation, qui peut être variable selon 
- l'adaptateur secteur --> 5V utilisé.
+ 
+ Le montage est insensible vis à vis de la tension d'alimentation, qui peut être variable selon  l'adaptateur secteur --> 5V utilisé.
+ 
  La tension à mesurer est entre 1.3 et 1.75 V , une référence de 2.048 V serait plus adaptée, mais je n'en n'avait pas sous la main.
  
  la méthode de "régénération" est par impulsion de charge pendant 50 ms à 100 mA, puis une décharge de 2 ms à 50 mA.
