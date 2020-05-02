@@ -28,8 +28,12 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
   Cette tension, qui doit être très stable, est faite avec le circuit TL431 et une résistance.<br>
   L'avantage est que l'étalonnage se réduit à la mesure avec un multimètre de cette tension <br>
   (2.493 V dans mon montage) et au report de cette valeur dans le code. <br>
-  <h4>\#define  REF_EXT      2.493 </h4><br>
-  Le montage est insensible vis à vis de la tension d'alimentation, qui peut être variable selon <br>
+ ```
+ <h4> 
+ 
+ #define  REF_EXT      2.493 </h4><br>
+ ```
+  Le montage est insensible vis à vis de la tension d'alimentation, qui peut être différente selon <br>
   l'adaptateur secteur --> 5V utilisé.<br>
   La tension à mesurer est entre 1.3 et 1.75 V , une référence de 2.048 V serait plus adaptée,<br>
   mais je n'en n'avait pas sous la main.<br>
@@ -38,7 +42,8 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
  La tension de la pile en charge est moyennée sur les 32 mesures. La quantité d'énergie est calculée <br>
  en tenant compte des impulsions et   des ratios charge/décharge.<br>
  
- On fait 5*32 = 160 cycles ainsi, puis la lecture de la tension sans charge <br>
+ On fait 5*32 = 160 cycles en 10 secondes.<br>
+ Puis la lecture de la tension sans charge <br>
  et enfin une lecture de la tension avec un débit de 50 mA.<br>
 
  Un calcul permet d'évaluer la résistance interne . <br>
