@@ -7,7 +7,7 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
 
 <b>Ce soir je vous présente "Yarab" </b>
 
-## Yet Another Regenerator Alkaline Batterie"
+## Yet Another Regenerator Alkalin Battery"   
  Ce serpent de mer de l'électronique a de nombreux avatars, plus ou moins compliqués et, on l'espère, une certaine efficacité.<br>
  Voici le mien, à base de l'inévitable ATTiny85.<br>
  L'avantage d'utiliser un micro-controleur est:<br>
@@ -41,14 +41,15 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
  en tenant compte des impulsions et   des ratios charge/décharge.<br>
  
  On fait 5*32 = 160 cycles en 10 secondes.<br>
- Puis la lecture de la tension sans charge <br>
+ Puis une lecture de la tension sans charge <br>
  et enfin une lecture de la tension avec un débit de 50 mA.<br>
 
- Un calcul permet d'évaluer la résistance interne . <br>
+ Un calcul simple permet d'évaluer la résistance interne . <br>
  Bien sûr, ce n'est pas une valeur très précise, mais plutôt une indication de la "santé" de la pile .<br>
+ Une résistance interne supérieure à 3 ou 4 Ohms dirigera la pile dictement dans le bac de reclyclage. <br>
 
 #  Explication sur le schéma:
-
+```
     PINS    ATT85
            ________-_______
            | 1:RST  8: Vcc |
@@ -56,16 +57,24 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
     A2 Pile| 3:PB4  6: PB1 |Cmd charge 100mA
            | 4:Gnd  5: PB0 |External Ref ==> TL431
            ----------------- 
-```
+
  PB3 est la sortie série à 9600 bd (modifiable) et active aussi la led rouge 
  PB4 est l'entrée analogique, reliée directement au pole + de la pile
  PB0 est l'entrée de la référence de tension du TL431
  PB1 commande la charge à travers une résistance de 33 ohm et un PNP 2N2907
  PB2 active la décharge de la pile à travers une résistance de 24 ohm et un 2N7000.
  ```
- Un condensateur de 2200µF est placé entre le + et - fournit par la prise mini USB <br>
-
+ Un condensateur de 2200µF est placé entre le + et - fournit par la prise mini USB pour absorber les pics de courant<br>
  Il me manque une IO pour implémenter un afficheur I2C , mais je voulais réserver PB0 à la référence de tension.<br>
+ 
+ Le code permet de générer 3 sortes de  sorties sur la pin TX.
+<h2>#Type de sortie</h2>
+<ul>
+  <li>Sortie console, directement lisible avec la console de l'IDE Arduino, par exemple</li>
+  <li>Sortie Tension et R interne,séparés par une virgule , pour la fonction Traceur de l'IDE </li>
+  <li>Sortie compatible LogView V2</li>
+</ul>
+
  
 
 
