@@ -83,6 +83,7 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
   <li>Regenerateur_pile_alcaline.ini et .jpg sont deux fichiers pour LogView<br>
    Ils faut les copier dansle répertoire <b>C:\Users\votre_nom\AppData\Roaming\LogView\Geraete\OpenFormat</b> <br>
    après avoir installé Logview. </li>
- <li> LogView V2 est là :  <http://www.logview.info/forum/index.php?pages/eng/.> </li>
-</ul>
-
+</ul><br>
+  LogView V2 est là :  <http://www.> 
+  <a href="http://www.logview.info/forum/index.php?pages/eng/."> <b>LogView V2</b> </a>
+  
