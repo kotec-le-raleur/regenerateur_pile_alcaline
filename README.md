@@ -29,9 +29,7 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
   L'avantage est que l'étalonnage se réduit à la mesure avec un multimètre de cette tension <br>
   (2.493 V dans mon montage) et au report de cette valeur dans le code. <br>
  ```
- <h4> 
- 
- #define  REF_EXT      2.493 </h4><br>
+  #define  REF_EXT      2.493  // tension mesurée sur le TL431<br>
  ```
   Le montage est insensible vis à vis de la tension d'alimentation, qui peut être différente selon <br>
   l'adaptateur secteur --> 5V utilisé.<br>
