@@ -85,5 +85,5 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
    après avoir installé Logview. </li>
 </ul><br>
   LogView V2 est là :  <http://www.> 
-  <a href="http://www.logview.info/forum/index.php?pages/eng/."> <b>LogView V2</b> </a>
+  <a href="http://www.logview.info/forum/index.php?pages/eng/." target="_blank"> <b>LogView V2</b> </a>
   
