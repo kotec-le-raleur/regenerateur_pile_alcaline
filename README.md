@@ -80,6 +80,7 @@ Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
 <ul>
   <li>Regenerateur_V2.ino  et Common.h  constituent le code arduino pour ATT85</li>
   <li>Test_Ikea_graphe estune capture d'écran de LogView </li>
+  <li> Schema_regenerateur.pdf est .........le schéma ! 
   <li>Regenerateur_pile_alcaline.ini et .jpg sont deux fichiers pour LogView<br>
    Ils faut les copier dans le répertoire <b>C:\Users\votre_nom\AppData\Roaming\LogView\Geraete\OpenFormat</b> <br>
    après avoir installé Logview. </li>
