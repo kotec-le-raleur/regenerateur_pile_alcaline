@@ -2,8 +2,7 @@
 Encore un schéma pour tenter de faire revivre les piles alcalines <br>
 
 
-"Yacc" est un acronyme bien connu des développeurs logiciels.<br>
-Yet Another Compiler Compiler (« Encore un autre compilateur de compilateur »)
+
 
 <b>Ce soir je vous présente "Yarab" </b>
 
