@@ -3,20 +3,24 @@
 // charge 100 mA 
 // montage juste pour le fun
 
-#define  VERSION  "V2.11 30/04/2020\n"
+#define  VERSION  "V2.4 27/02/2023\n"
+// support du format pour teleplot sous VSCode
 
-#undef 	 USE_CONSOLE
+
+#define	 USE_TELEPLOT
+#undef	 USE_CONSOLE
 #undef	 USE_TRACEUR
-#define	 USE_LOGVIEW
+#undef 	 USE_LOGVIEW
 
 #define  REF_1V       6
 #define  REF_256V     4
 #define  REF_VCC      0
+#define INC_TEMPS    5
 
 #include "Common.h"
 #include <SoftwareSerial.h>
 
-// PINS    ATT85
+// PINS    ATT85 
 //        ________U_______
 //        | 1:RST  8: Vcc |
 // TX+Led | 2:PB3  7: PB2 |Cmd drain 50mA
@@ -35,7 +39,9 @@ int   Val_C1 		= 0;   	// tension pile en débit de 50 mA
 float deltaV 		= 0.0;
 unsigned long time  = 0;
 unsigned long Temps = 0;
+unsigned long Tpx   = 0;
 
+//************************************************************************
 void setup() {
   TinySerial.begin(9600);
   pinMode(CMD_DRAIN,OUTPUT);
@@ -46,7 +52,7 @@ void setup() {
   analogReference(EXTERNAL);  // utilise la tension du TL431 sur la pin 5 ===> 2.493 V 
   Charge_Totale = 0.0;
   Temps         = 0;
-  NbPass 		= 0;
+  NbPass 	    	= 0;
   #ifdef USE_LOGVIEW
     PRTL("$1;Start");
   #endif
@@ -59,35 +65,49 @@ void setup() {
 ///********************************************************/
 void loop() {
 // on met en marche la charge de 100mA
-    ValAdc = CourantPulse(32);
-	Charge_Totale = Charge_Totale + INC_CHARGE;  // charge 
-	
- 	if (NbPass > NBPASSMAX)
+
+  ValAdc = CourantPulse(32);
+  #ifdef USE_CONSOLE
+	PRT(" - "); PRT(ValAdc);
+  #endif	
+ 	if (NbPass > NBPASSMAX)  // 10 passages
 	{
 		PileValue = ValAdc * (REF_EXT/1024.0);
-		
+		LOAD_OFF 
 		Val_C0 = analogRead(A2);  // Vpile à vide
 		DRAIN_ON
 		delay(5);   // delai stabilisation de Vpile
-		Val_C1 = analogRead(A2);
+		Val_C1 = analogRead(A2);  // pile en charge
 		DRAIN_OFF
 		deltaV = (Val_C0 - Val_C1) * 1.0;
-		deltaV = (deltaV / Val_C1) * RESISTANCE;
-		Temps = Temps + INC_TEMPS; // temps écoulé depuis le départ
+		deltaV = (deltaV / Val_C1) * RESISTANCE;   // calcul de la résistance interne ==> on reprend deltaV
+		Temps  += 20; // temps écoulé depuis le départ
+
+	  LOAD_ON
+	  delay(1120);                //delai en + en charge pour ajuster à 20 secondes / tour
+    LOAD_OFF  
+    Charge_Totale = Charge_Totale + INC_CHARGE;  // charge == 20 secondes avec 0.1A
+
 		NbPass = 0;
 		
 #ifdef USE_CONSOLE
-		PRT("Pile = ");
-		PRT(C); PRT(" V");
-		PRT("\tR_int = ");
-		PRT(deltaV);PRT(" Ohm");
-		PRT("\tQt = ");
-		PRT((int)Charge_Totale);PRT(" mAh");
-		PRT("\tTemps = "); CvTemp(Temps);PRTL(Buf);
+    PRTL(" ");
+		PRT("Pile = ");		    PRT(PileValue);
+		PRT("\tR_int = ");		PRT(deltaV);PRT(" Ohm");
+		PRT("\tQt = ");   		PRT((int)Charge_Totale);PRT(" mAh");
+		PRT("\tTemps = ");    CvTemp(Temps);PRTL(Buf);
 #endif
 
 #ifdef USE_TRACEUR
-		PRT(PileValue); PRT(" , ");	PRTL(deltaV);
+		PRT(PileValue); 
+    PRT(" , ");	
+    PRTL(deltaV);
+#endif
+
+#ifdef USE_TELEPLOT
+		PRT(">Vp:"); PRTL(PileValue);
+		PRT(">Ri:"); PRTL(deltaV);
+		PRT(">Qc:"); PRTL(Charge_Totale);
 #endif
 
 #ifdef USE_LOGVIEW
@@ -98,7 +118,7 @@ void loop() {
 		PRTL("0");
 #endif
 		
-		if (ValAdc > MAX_ADC){
+		if (ValAdc > MAX_ADC){   // MAX_ADC = 700  
 			while (1){
 				LOAD_OFF
 				DRAIN_OFF
